@@ -1,7 +1,7 @@
 import Constants from 'expo-constants';
 import * as SecureStore from 'expo-secure-store';
 
-const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL || 'http://10.139.101.44:6969';
+const API_BASE_URL = process.env.EXPO_PUBLIC_API_URL || 'https://vanithavikasappibm.vercel.app';
 
 class ApiService {
   constructor() {
