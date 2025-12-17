@@ -1,0 +1,609 @@
+{
+    "info": {
+        "_postman_id": "12345678-1234-1234-1234-123456789012",
+        "name": "Vanitha Vikas API",
+        "description": "API collection for Vanitha Vikas backend",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Health Check",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        ""
+                    ]
+                },
+                "description": "Check if the API is running"
+            },
+            "response": []
+        },
+        {
+            "name": "Register User",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"phoneNumber\": \"9876543210\",\n  \"password\": \"password123\",\n  \"role\": \"user\"\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/auth/register",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "auth",
+                        "register"
+                    ]
+                },
+                "description": "Register a new user"
+            },
+            "response": []
+        },
+        {
+            "name": "Register Provider",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"firstName\": \"Priya\",\n  \"lastName\": \"Sharma\",\n  \"email\": \"priya.sharma@example.com\",\n  \"phoneNumber\": \"9123456789\",\n  \"password\": \"password123\",\n  \"role\": \"provider\"\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/auth/register",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "auth",
+                        "register"
+                    ]
+                },
+                "description": "Register a new service provider"
+            },
+            "response": []
+        },
+        {
+            "name": "Login User",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"password123\"\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/auth/login",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "auth",
+                        "login"
+                    ]
+                },
+                "description": "Login user and get JWT token"
+            },
+            "response": []
+        },
+        {
+            "name": "Get User Profile",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{jwt_token}}",
+                        "description": "JWT token from login response"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/auth/profile",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "auth",
+                        "profile"
+                    ]
+                },
+                "description": "Get authenticated user's profile"
+            },
+            "response": []
+        },
+        {
+            "name": "Update Provider Profile",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{jwt_token}}",
+                        "description": "JWT token from login response"
+                    }
+                ],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "phoneNumber",
+                            "value": "9876543210",
+                            "description": "Updated phone number",
+                            "type": "text"
+                        },
+                        {
+                            "key": "city",
+                            "value": "Bangalore",
+                            "description": "City name",
+                            "type": "text"
+                        },
+                        {
+                            "key": "state",
+                            "value": "Karnataka",
+                            "description": "State name",
+                            "type": "text"
+                        },
+                        {
+                            "key": "pincode",
+                            "value": "560001",
+                            "description": "Pincode",
+                            "type": "text"
+                        },
+                        {
+                            "key": "profilePicture",
+                            "description": "Profile picture file",
+                            "type": "file"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/auth/profile",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "auth",
+                        "profile"
+                    ]
+                },
+                "description": "Update provider profile with location, phone number, and profile picture"
+            },
+            "response": []
+        },
+        {
+            "name": "Create Service",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{jwt_token}}",
+                        "description": "JWT token from login response"
+                    }
+                ],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "serviceName",
+                            "value": "Professional Tailoring Services",
+                            "description": "Name of the service",
+                            "type": "text"
+                        },
+                        {
+                            "key": "category",
+                            "value": "tailoring",
+                            "description": "Category: tailoring, cooking, beauty-services, teaching, arts-and-crafts, other",
+                            "type": "text"
+                        },
+                        {
+                            "key": "description",
+                            "value": "Expert tailoring services for all types of clothing. Specializing in traditional Indian wear, western outfits, and alterations.",
+                            "description": "Detailed description of the service",
+                            "type": "text"
+                        },
+                        {
+                            "key": "price",
+                            "value": "500",
+                            "description": "Price in rupees",
+                            "type": "text"
+                        },
+                        {
+                            "key": "serviceImage",
+                            "description": "Service image file",
+                            "type": "file"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/services",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "services"
+                    ]
+                },
+                "description": "Create a new service (providers only)"
+            },
+            "response": []
+        },
+        {
+            "name": "Get All Services",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/api/services?category=tailoring&city=Bangalore&page=1&limit=10",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "services"
+                    ],
+                    "query": [
+                        {
+                            "key": "category",
+                            "value": "tailoring",
+                            "description": "Filter by category (optional)"
+                        },
+                        {
+                            "key": "city",
+                            "value": "Bangalore",
+                            "description": "Filter by city (optional)"
+                        },
+                        {
+                            "key": "page",
+                            "value": "1",
+                            "description": "Page number (optional, default: 1)"
+                        },
+                        {
+                            "key": "limit",
+                            "value": "10",
+                            "description": "Items per page (optional, default: 10)"
+                        }
+                    ]
+                },
+                "description": "Get all services with optional filters"
+            },
+            "response": []
+        },
+        {
+            "name": "Get My Services",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{jwt_token}}",
+                        "description": "JWT token from login response"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/services/my",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "services",
+                        "my"
+                    ]
+                },
+                "description": "Get provider's own services"
+            },
+            "response": []
+        },
+        {
+            "name": "Get Service by ID",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/api/services/{{service_id}}",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "services",
+                        "{{service_id}}"
+                    ]
+                },
+                "description": "Get single service by ID"
+            },
+            "response": []
+        },
+        {
+            "name": "Update Service",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{jwt_token}}",
+                        "description": "JWT token from login response"
+                    }
+                ],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "serviceName",
+                            "value": "Updated Tailoring Services",
+                            "description": "Updated service name (optional)",
+                            "type": "text"
+                        },
+                        {
+                            "key": "category",
+                            "value": "tailoring",
+                            "description": "Updated category (optional)",
+                            "type": "text"
+                        },
+                        {
+                            "key": "description",
+                            "value": "Updated description of the tailoring service with new specializations.",
+                            "description": "Updated description (optional)",
+                            "type": "text"
+                        },
+                        {
+                            "key": "price",
+                            "value": "600",
+                            "description": "Updated price (optional)",
+                            "type": "text"
+                        },
+                        {
+                            "key": "serviceImage",
+                            "description": "Updated service image (optional)",
+                            "type": "file"
+                        }
+                    ]
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/services/{{service_id}}",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "services",
+                        "{{service_id}}"
+                    ]
+                },
+                "description": "Update service (provider only)"
+            },
+            "response": []
+        },
+        {
+            "name": "Delete Service",
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{jwt_token}}",
+                        "description": "JWT token from login response"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/services/{{service_id}}",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "services",
+                        "{{service_id}}"
+                    ]
+                },
+                "description": "Delete service (provider only)"
+            },
+            "response": []
+        },
+        {
+            "name": "Start Chat with Provider",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{jwt_token}}",
+                        "description": "JWT token from login response"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"serviceId\": \"{{service_id}}\"\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/chat/start",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "chat",
+                        "start"
+                    ]
+                },
+                "description": "Start a chat with a service provider (users only)"
+            },
+            "response": []
+        },
+        {
+            "name": "Get My Chats",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{jwt_token}}",
+                        "description": "JWT token from login response"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/chat/my",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "chat",
+                        "my"
+                    ]
+                },
+                "description": "Get all chats for the authenticated user"
+            },
+            "response": []
+        },
+        {
+            "name": "Get Chat Messages",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{jwt_token}}",
+                        "description": "JWT token from login response"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/chat/{{chat_id}}/messages?page=1&limit=50",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "chat",
+                        "{{chat_id}}",
+                        "messages"
+                    ],
+                    "query": [
+                        {
+                            "key": "page",
+                            "value": "1",
+                            "description": "Page number (optional, default: 1)"
+                        },
+                        {
+                            "key": "limit",
+                            "value": "50",
+                            "description": "Messages per page (optional, default: 50)"
+                        }
+                    ]
+                },
+                "description": "Get messages for a specific chat"
+            },
+            "response": []
+        },
+        {
+            "name": "Send Message",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{jwt_token}}",
+                        "description": "JWT token from login response"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"content\": \"Hello! I'm interested in your service. Can you provide more details?\"\n}"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/chat/{{chat_id}}/messages",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "chat",
+                        "{{chat_id}}",
+                        "messages"
+                    ]
+                },
+                "description": "Send a message in a chat"
+            },
+            "response": []
+        }
+    ],
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:6969",
+            "type": "string"
+        },
+        {
+            "key": "jwt_token",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "service_id",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "chat_id",
+            "value": "",
+            "type": "string"
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "vv",
+    "slug": "vv",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/app-logo.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/app-logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/app-logo.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/app-logo.png"
+    },
+    "sdkVersion": "53.0.0",
+    "extra": {
+      "EXPO_PUBLIC_API_URL": "http://10.211.124.44:6969",
+      "EXPO_PUBLIC_SOCKET_URL": "http://10.211.124.44:6969",
+      "GEOAPIFY_API_KEY": "2bde270def7546f6a4d6f5462f45e5bc"
+    },
+    "plugins": [
+      "expo-secure-store"
+    ]
+  }
+}
